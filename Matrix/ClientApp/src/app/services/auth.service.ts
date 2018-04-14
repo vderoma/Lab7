@@ -8,7 +8,7 @@ import 'rxjs/add/operator/map';
 @Injectable()
 export class AuthService {
 
-  baseUrl = 'http://matrix4135.azurewebsites.net/api/auth/';
+  baseUrl = 'http://matrix4135.azurewebsites.net';
   constructor(private http: HttpClient, private JwtHelperService: JwtHelperService) { }
 
   register(model) {
