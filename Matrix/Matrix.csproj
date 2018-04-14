@@ -2,9 +2,16 @@
 
   <PropertyGroup>
     <TargetFramework>netcoreapp2.0</TargetFramework>
+    <TypeScriptToolsVersion>2.5</TypeScriptToolsVersion>
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="ClientApp\src\app\models\authenticatedUser.ts" />
+    <None Remove="ClientApp\src\app\models\user.ts" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="ClientApp\src\app\services\" />
     <Folder Include="wwwroot\" />
   </ItemGroup>
 
@@ -15,6 +22,11 @@
 
   <ItemGroup>
     <DotNetCliToolReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Tools" Version="2.0.2" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <TypeScriptCompile Include="ClientApp\src\app\models\authenticatedUser.ts" />
+    <TypeScriptCompile Include="ClientApp\src\app\models\user.ts" />
   </ItemGroup>
 
 </Project>
