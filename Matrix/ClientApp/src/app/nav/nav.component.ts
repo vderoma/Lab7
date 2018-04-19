@@ -7,10 +7,10 @@ import { AuthService } from '../services/auth.service';
 })
 export class NavComponent implements OnInit {
   model = {};
-
+  user = JSON.parse(localStorage.getItem('user')).userName;
   isCollapsed = false;
   constructor(public AuthService: AuthService) { }
-
+  
   ngOnInit() {
   }
 

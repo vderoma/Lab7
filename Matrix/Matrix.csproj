@@ -7,15 +7,20 @@
 
   <ItemGroup>
     <None Remove="ClientApp\src\app\models\authenticatedUser.ts" />
+    <None Remove="ClientApp\src\app\models\photodto.ts" />
     <None Remove="ClientApp\src\app\models\user.ts" />
+    <None Remove="ClientApp\src\app\models\userdto.ts" />
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="ClientApp\src\app\services\" />
+    <Folder Include="ClientApp\src\app\member\" />
+    <Folder Include="ClientApp\src\app\friendslist\" />
+    <Folder Include="ClientApp\src\app\messages\" />
     <Folder Include="wwwroot\" />
   </ItemGroup>
 
   <ItemGroup>
+    <PackageReference Include="AutoMapper.Extensions.Microsoft.DependencyInjection" Version="3.2.0" />
     <PackageReference Include="Microsoft.AspNetCore.All" Version="2.0.5" />
     <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="2.0.2" />
   </ItemGroup>
@@ -26,7 +31,9 @@
 
   <ItemGroup>
     <TypeScriptCompile Include="ClientApp\src\app\models\authenticatedUser.ts" />
+    <TypeScriptCompile Include="ClientApp\src\app\models\photodto.ts" />
     <TypeScriptCompile Include="ClientApp\src\app\models\user.ts" />
+    <TypeScriptCompile Include="ClientApp\src\app\models\userdto.ts" />
   </ItemGroup>
 
 </Project>

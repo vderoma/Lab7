@@ -3,12 +3,13 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { JwtHelperService } from '@auth0/angular-jwt';
 import { AuthUser } from '../models/authenticatedUser';
 import 'rxjs/add/operator/map';
+import { environment } from '../../environments/environment';
 
 
 @Injectable()
 export class AuthService {
 
-  baseUrl = 'http://matrix4135.azurewebsites.net';
+  baseUrl = environment.apiUrl;
   constructor(private http: HttpClient, private JwtHelperService: JwtHelperService) { }
 
   register(model) {

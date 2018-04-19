@@ -5,14 +5,14 @@
   </button>
   <div [collapse]="isCollapsed" class="collapse navbar-collapse" id="navbarsExampleDefault">
     <ul class="navbar-nav mr-auto">
-      <li class="nav-item active">
-        <a class="nav-link" href="#">Matches</a><span class="sr-only">(current)</span>
+      <li class="nav-item" *ngIf="verifyLogin()">
+        <a class="nav-link" routerLink="/members">Members</a>
       </li>
-      <li class="nav-item">
-        <a class="nav-link" href="#">Friend Lists</a>
+      <li class="nav-item" *ngIf="verifyLogin()">
+        <a class="nav-link" routerLink="/friends">Friend Lists</a>
       </li>
-      <li class="nav-item">
-        <a class="nav-link" href="#">Messages</a>
+      <li class="nav-item" *ngIf="verifyLogin()">
+        <a class="nav-link" routerLink="/messages">Messages</a>
       </li>
     </ul>
     <form *ngIf="verifyLogin()" class="form-inline my-2 my-lg-0" #loginForm="ngForm" (ngSubmit)="login()">
@@ -22,7 +22,7 @@
     </form>
     <div *ngIf="!verifyLogin()" class="btn-group" dropdown>
       <button dropdownToggle type="button" class="dropdown-toggle btn btn-primary">
-        Welcome!<span class="caret"></span>
+        Welcome back, {{user}}!
       </button>
       <ul *dropdownMenu class="dropdown-menu" role="menu">
         <li role="menuitem"><a class="dropdown-item" href="#">Edit Profile</a></li>

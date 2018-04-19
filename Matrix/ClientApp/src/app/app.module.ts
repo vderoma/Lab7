@@ -16,6 +16,11 @@ import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
 import { CollapseModule } from 'ngx-bootstrap/collapse';
 import { AlertModule } from 'ngx-bootstrap/alert';
 import { JwtModule } from '@auth0/angular-jwt';
+import { UserService } from './services/user.service';
+import { MemberListComponent } from './member/member/member-list/member-list.component';
+import { MemberCardComponent } from './member/member/member-card/member-card.component';
+import { MessagesComponent } from './messages/messages/messages/messages.component';
+import { FriendslistComponent } from './friendslist/friendslist/friendslist.component';
 
 
 export function tokenGetter() {
@@ -26,7 +31,11 @@ export function tokenGetter() {
     AppComponent,
     NavComponent,
     HomeComponent,
-    RegisterComponent
+    RegisterComponent,
+    MemberListComponent,
+    MemberCardComponent,
+    MessagesComponent,
+    FriendslistComponent
   ],
   imports: [
     BrowserModule,
@@ -43,7 +52,7 @@ export function tokenGetter() {
       }
     })
   ],
-  providers: [AuthService],
+  providers: [AuthService, UserService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
