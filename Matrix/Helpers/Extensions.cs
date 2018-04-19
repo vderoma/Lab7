@@ -11,6 +11,10 @@ namespace Matrix.Helpers
         {
             int age = DateTime.Today.Year - birthdate.Year;
             // adjust age if current year birthday hasn't happened yet
+            if (DateTime.Today.CompareTo(new DateTime(DateTime.Today.Year, birthdate.Month, birthdate.Day)) < 0)
+            {
+                age -= 1;
+            }
             return age;
 
         }
