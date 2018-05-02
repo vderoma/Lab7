@@ -21,6 +21,10 @@ import { MemberListComponent } from './member/member/member-list/member-list.com
 import { MemberCardComponent } from './member/member/member-card/member-card.component';
 import { MessagesComponent } from './messages/messages/messages/messages.component';
 import { FriendslistComponent } from './friendslist/friendslist/friendslist.component';
+import { MemberDetailsComponent } from './member/member/member-details/member-details.component';
+import { TimeAgoPipe } from 'time-ago-pipe';
+import { MemberEditComponent } from './member/member/member-edit/member-edit.component';
+import { PhotoEditorComponent } from './photo-editor/photo-editor.component';
 
 
 export function tokenGetter() {
@@ -35,7 +39,11 @@ export function tokenGetter() {
     MemberListComponent,
     MemberCardComponent,
     MessagesComponent,
-    FriendslistComponent
+    FriendslistComponent,
+    MemberDetailsComponent,
+    TimeAgoPipe,
+    MemberEditComponent,
+    PhotoEditorComponent
   ],
   imports: [
     BrowserModule,

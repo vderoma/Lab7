@@ -9,7 +9,11 @@ export class UserService {
   baseUrl = environment.apiUrl;
   constructor(private http: HttpClient) { }
 
-  getUsers() {
+  updateUser(id, updatedUser) {
+    return this.http.put(this.baseUrl + '/users/updateuser/' + id, updatedUser);
+  }
+
+  getUsers(id) {
     return this.http.get<Array<UserDto>>(this.baseUrl + '/users/users');
   }
 }

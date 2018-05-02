@@ -4,6 +4,7 @@ using System.Security.Cryptography;
 using System.Threading.Tasks;
 using Matrix.Models;
 using Microsoft.EntityFrameworkCore;
+using Matrix.Data;
 
 namespace Matrix.Data
 {
@@ -48,19 +49,18 @@ namespace Matrix.Data
             return verified;
         }
 
-        public async Task<User> Register(string userName, string password)
+        public async Task<User> Register(User user, string password)
         {
             // Hash the password using SHA512 with random key (salt)
             var hash = new HMACSHA512();
             var computedHash = hash.ComputeHash(System.Text.Encoding.UTF8.GetBytes(password));
+            
+            user.PasswordHash = computedHash;
+            user.PasswordSalt = hash.Key;
 
-            var newUser = new User { userName = userName };
-            newUser.PasswordHash = computedHash;
-            newUser.PasswordSalt = hash.Key;
-
-            await _context.Users.AddAsync(newUser);
+            await _context.Users.AddAsync(user);
             await _context.SaveChangesAsync();
-            return newUser;
+            return user;
         }
 
         public bool CheckDuplicates(string userName)

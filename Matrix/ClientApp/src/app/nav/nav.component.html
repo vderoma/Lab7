@@ -25,8 +25,8 @@
         Welcome back, {{user}}!
       </button>
       <ul *dropdownMenu class="dropdown-menu" role="menu">
-        <li role="menuitem"><a class="dropdown-item" href="#">Edit Profile</a></li>
-        <li role="menuitem"><a class="dropdown-item" href="#" (click)="logout()">Logout</a></li>
+        <li role="menuitem"><a class="dropdown-item" routerLink="/member/edit">Edit Profile</a></li>
+        <li role="menuitem"><a class="dropdown-item" routerLink="/home" (click)="logout()">Logout</a></li>
       </ul>
     </div>
   </div>

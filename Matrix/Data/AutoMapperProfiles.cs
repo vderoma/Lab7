@@ -30,6 +30,14 @@ namespace Matrix.Data
             });
 
             CreateMap<Photo, PhotoDTO>();
+
+            CreateMap<UpdateUserDTO, User>();
+
+            CreateMap<Photo, PhotoReturnedDTO>();
+
+            CreateMap<AddPhotoDTO, Photo>();
+
+            CreateMap<RegisterUserDTO, User>();
         }
     }
 }

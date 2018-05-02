@@ -41,5 +41,16 @@ namespace Matrix.Controllers
             var allUsersDetails = _mapper.Map<IEnumerable<UserInfoBriefDTO>>(users);
             return allUsersDetails;
         }
+
+        [HttpPut]
+        [Route("/api/users/updateuser/{id}")]
+        public async Task<IActionResult> UpdateUser(int id, [FromBody] UpdateUserDTO updatedUser)
+        {
+            var user = await _repo.GetUser(id);
+            user = _mapper.Map(updatedUser, user);
+            await _repo.SaveAll();
+            return NoContent();
+
+        }
     }
 }

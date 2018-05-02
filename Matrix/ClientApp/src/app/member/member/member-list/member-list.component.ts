@@ -10,10 +10,11 @@ export class MemberListComponent implements OnInit {
 
   constructor(private userService: UserService) { }
   users = [];
+  id: any = {};
   ngOnInit() {
     this.getUsers();
   }
   getUsers() {
-    this.userService.getUsers().subscribe(p => this.users = p);
+    this.userService.getUsers(this.id).subscribe(p => this.users = p);
   }
 }

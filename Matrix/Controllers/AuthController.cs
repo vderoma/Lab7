@@ -12,6 +12,8 @@ using System.Text;
 using System.Security.Claims;
 using Microsoft.IdentityModel.Tokens;
 using Microsoft.Extensions.Configuration;
+using AutoMapper;
+using Matrix.Models;
 
 namespace Matrix.Controllers
 {
@@ -21,6 +23,8 @@ namespace Matrix.Controllers
     {
         private readonly IAuthRepository _repo;
         private readonly IConfiguration _configuration;
+        private readonly IMapper _mapper;
+
 
 
         public AuthController(IAuthRepository repo, IConfiguration configuration)
@@ -47,9 +51,9 @@ namespace Matrix.Controllers
                 return BadRequest(ModelState);
             }
 
-            var newUser = await _repo.Register(user.userName, user.Password);
+            var newUser = await _repo.Register(_mapper.Map<User>(user), user.Password);
             // Temporary return result for testing
-            return StatusCode(201, new { userID = newUser.userID, userName = newUser.userName });
+            return Created("api/Auth/Register", _mapper.Map<UserInfoDetailedDTO>(newUser)); //StatusCode(201, new { userID = newUser.userID, userName = newUser.userName });
         }
 
         [HttpPost("login")]

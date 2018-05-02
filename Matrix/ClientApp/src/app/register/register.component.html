@@ -8,6 +8,17 @@
     <div style="padding-top:20px">
       <input type="password" id="confirmPassword" class="form-control" placeholder="Confirm Password" required>
     </div>
+
+    <div class="mb-3">
+      <p class="d-inline">Gender:</p>
+      <input type="radio" class="ml-2 d-inline" name="gender" value="male" [(ngModel)]="model.gender"> Male
+      <input type="radio" class="ml-2 d-inline" name="gender" value="female" [(ngModel)]="model.gender"> Female
+    </div>
+
+    <input type="text" class="form-control mb-3" name="name" placeholder="Name" [(ngModel)]="model.name">
+    <input type="text" class="form-control mb-3" name="birthDate" placeholder="Birth Date" [(ngModel)]="model.birthDate" bsDatepicker>
+    <input type="text" class="form-control mb-3" name="city" placeholder="City" [(ngModel)]="model.city">
+
     <ul class="list-unstyled mr-auto form-inline" style="justify-content:center; padding-top:40px">
       <li style="padding-right:15px">
         <button class="btn btn-lg btn-success btn-block" type="submit" [disabled]="!registerForm.valid">Register</button>

@@ -1,0 +1,51 @@
+<div *ngIf="loggedIn" class="container">
+  <div class="row mt-5">
+    <h2>Your Profile</h2>
+  </div>
+  <div class="row">
+    <div class="card col-xs-6">
+      <img *ngIf="member.photoUrl != null" class="profile-picture" src="{{member.photoUrl}}" alt="{{member.name}}" />
+      <img *ngIf="member.photoUrl == null" class="profile-picture" src="../../../assets/default.png" alt="{{member.city}}" />
+      <dl class="mt-2 ml-3 text-left">
+        <dt>Location</dt>
+        <dd>{{member.city}}</dd>
+        <dt>Age</dt>
+        <dd>{{member.age}}</dd>
+        <dt>Last Active</dt>
+        <dd>{{member.lastActive | amFromUtc | amLocal | timeAgo}}</dd>
+        <dt>Member Since</dt>
+        <dd>{{member.created | date}}</dd>
+      </dl>
+    </div>
+    <div class="col-9">
+      <tabset [justified]="true">
+        <tab heading="About {{member.name}}" id="tab1" class="text-left">
+          <h3><strong>Description:</strong></h3>
+          <p>{{member.introduction}}</p>
+          <h3><strong>Looking For:</strong></h3>
+          <p>{{member.lookingFor}}</p>
+        </tab>
+        <tab heading="Interests" class="text-left">
+          <h3><strong>Interests:</strong></h3>
+          <p>{{member.interests}}</p>
+        </tab>
+        <tab heading="Photos" class="text-left">
+          <carousel>
+            <slide *ngFor="let picture of member.photos" class="col-8 mt-2">
+              <img src="{{photo.url}}" alt="{{member.name}}" style="display: block; width: 100%;">
+              <div *ngIf="photo.description != ''" class="carousel-caption d-none d-md-block">
+                <h3>Description</h3>
+                <p>{{photo.description}}</p>
+              </div>
+            </slide>
+          </carousel>
+          <div class="row">
+            <div class="mt-3" *ngFor="let picture of member.photos">
+              <img class="thumbnail col-auto" src="{{photo.url}}" alt="" />
+            </div>
+          </div>
+        </tab>
+      </tabset>
+    </div>
+  </div>
+</div>

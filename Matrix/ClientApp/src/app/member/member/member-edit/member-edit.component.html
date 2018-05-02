@@ -1,0 +1,44 @@
+
+<div class="row mt-5">
+  <h2>Your Profile</h2>
+</div>
+<div class="row">
+  <div class="card col-xs-6">
+    <img *ngIf="member.photoUrl != null" class="profile-picture" src="{{member.photoUrl}}" alt="{{member.name}}" />
+    <img *ngIf="member.photoUrl == null" class="profile-picture" src="../../../assets/default.png" alt="{{member.city}}" />
+    <dl class="mt-2 ml-3 text-left">
+      <dt>Location</dt>
+      <dd>{{member.city}}</dd>
+      <dt>Age</dt>
+      <dd>{{member.age}}</dd>
+      <dt>Last Active</dt>
+      <dd>{{member.lastActive | amFromUtc | amLocal | timeAgo}}</dd>
+      <dt>Member Since</dt>
+      <dd>{{member.created | date}}</dd>
+    </dl>
+    <button class="btn btn btn-primary container" type="submit">Save Changes</button>
+  </div>
+  <div class="col-9">
+    <tabset [justified]="true">
+      <tab heading="Edit Profile" id="tab1" class="text-left">
+        <h3><strong>Description:</strong></h3>
+        <textarea name="introduction" [(ngModel)]="member.introduction">
+              {{member.introduction}}
+            </textarea>
+        <h3><strong>Looking For:</strong></h3>
+        <textarea name="lookingFor" [(ngModel)]="member.lookingFor">
+              {{member.lookingFor}}
+            </textarea>
+        <h3><strong>Interests:</strong></h3>
+        <textarea name="interests" [(ngModel)]="member.interests">
+              {{member.interests}}
+            </textarea>
+        <h3><strong>City</strong></h3>
+        <input type="text" name="city" placeholder="{{member.city}}" [(ngModel)]="member.city">
+      </tab>
+      <tab heading="Edit Photos" class="text-left">
+        <app-photo-editor [photos]="member.photos"></app-photo-editor>        
+      </tab>
+    </tabset>
+  </div>
+</div>

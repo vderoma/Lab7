@@ -50,6 +50,7 @@ namespace Matrix
                 opt.SerializerSettings.ReferenceLoopHandling =
                 Newtonsoft.Json.ReferenceLoopHandling.Ignore;
             });
+            services.AddCors();
             services.AddAutoMapper();
             //services.AddMvc();
         }
@@ -64,6 +65,10 @@ namespace Matrix
             //seeder.SeedUsers();
             app.UseDefaultFiles();
             app.UseStaticFiles();
+            app.UseCors(x => x.AllowAnyHeader()
+                .AllowAnyMethod()
+                .AllowAnyOrigin()
+                .AllowCredentials());
             app.UseAuthentication();
             app.UseMvc(routes => {
                 routes.MapSpaFallbackRoute(
